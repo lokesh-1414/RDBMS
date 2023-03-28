@@ -1,8 +1,4 @@
-1.select concat(employees.first_name, ' ', employees.last_name) as fullname
-, employees.email
-, employees.salary
-, departments.department_name
-, locations.postal_code
+1.select concat(employees.first_name, ' ', employees.last_name) as fullname, employees.email, employees.salary, departments.department_name, locations.postal_code
 , locations.city
 from
   employees
@@ -13,32 +9,21 @@ on departments.location_id = locations.location_id;
 
 
 
-2.select departments.department_name
-, locations.street_address
-, locations.state_province
+2.select departments.department_name, locations.street_address, locations.state_province
 from
   departments
-  inner join locations
-on locations.location_id = departments.location_id
-where
-  locations.state_province in ('Jharkhand', 'Jammu&Kashmir');
+  inner join locations on locations.location_id = departments.location_id
+where locations.state_province in ('Jharkhand', 'Jammu&Kashmir');
 
 
-3.select count(employees.employee_id)
-, jobs.job_title
-, avg(employees.salary)
-from
-  employees
-  inner join jobs
-on jobs.job_id = employees.job_id
-group by
-  jobs.job_id
-having
-  avg(employees.salary) > 10000;
+3.select count(employees.employee_id), jobs.job_title, avg(employees.salary)
+from employees
+ inner join jobs on jobs.job_id = employees.job_id
+group by jobs.job_id
+having avg(employees.salary) > 10000;
 
 
-4.select employees.first_name
-, employees.last_name
+4.select employees.first_name, employees.last_name
 from
   employees
 union
@@ -51,8 +36,7 @@ order by
   last_name desc;
 
 
-5.select employees.first_name
-, m.first_name
+5.select employees.first_name, m.first_name
 from
   employees
   inner join employees as m
