@@ -37,6 +37,7 @@ new relation, decompose and re-compute the keys and the normal forms they satisf
 # Answer
 
 a . Candidate key = CE
+
 b. 1NF because in 2NF it failed because C->A has partial dependency.
 
 c. 
